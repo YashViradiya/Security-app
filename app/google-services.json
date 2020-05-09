@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "390284088613",
+    "firebase_url": "https://sfors-24b4b.firebaseio.com",
+    "project_id": "sfors-24b4b",
+    "storage_bucket": "sfors-24b4b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:390284088613:android:52b41bbfc2578eb7d436cc",
+        "android_client_info": {
+          "package_name": "com.example.secfsoc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "390284088613-910cjvv0kc0due69iktbpk1pmp7u5sgv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSvtSjw9I9Mqv0y8KYKMolRvTpfOJbJIU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "390284088613-910cjvv0kc0due69iktbpk1pmp7u5sgv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:390284088613:android:dceaf01d7163e1ecd436cc",
+        "android_client_info": {
+          "package_name": "com.example.sfors"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "390284088613-m7n6g57n7jsp024uq45186d045r2jkoe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sfors",
+            "certificate_hash": "de5f9ac3e70145ed241c89ec2ffde42327b0308f"
+          }
+        },
+        {
+          "client_id": "390284088613-910cjvv0kc0due69iktbpk1pmp7u5sgv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSvtSjw9I9Mqv0y8KYKMolRvTpfOJbJIU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "390284088613-910cjvv0kc0due69iktbpk1pmp7u5sgv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
