@@ -13,7 +13,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Welcome!"
+        android:fontFamily="@font/bungee"
+        android:layout_marginTop="20dp"
         android:textSize="40sp"
+        android:layout_marginBottom="30dp"
         />
     <TextView
         android:layout_width="wrap_content"
@@ -25,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp">
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"

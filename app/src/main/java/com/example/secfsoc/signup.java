@@ -46,11 +46,11 @@ public class signup extends AppCompatActivity {
 
                 if(!valfirst() || !vallast() || !valemail() ||!valphone() || !valpass())
                     return;
-                String a = regfirst.getEditText().getText().toString();
-                String b = reglast.getEditText().getText().toString();
-                String c = regemail.getEditText().getText().toString();
-                String d = regmo.getEditText().getText().toString();
-                String e = regpass.getEditText().getText().toString();
+                String a = regfirst.getEditText().getText().toString().trim();
+                String b = reglast.getEditText().getText().toString().trim();
+                String c = regemail.getEditText().getText().toString().trim();
+                String d = regmo.getEditText().getText().toString().trim();
+                String e = regpass.getEditText().getText().toString().trim();
                 final User usr = new User(a,b,c,d,e,"","","");
                 mAuth.createUserWithEmailAndPassword(c,e).addOnCompleteListener(signup.this,new OnCompleteListener<AuthResult>() {
                     @Override

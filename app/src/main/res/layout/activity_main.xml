@@ -12,10 +12,12 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome Back"
-        android:textSize="40sp"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="60dp"
+        android:fontFamily="@font/bungee"
+        android:text="sfors"
+        android:layout_gravity="center"
+        android:textSize="40sp" />
     <TextView
         android:id="@+id/signin"
         android:layout_width="wrap_content"
