@@ -24,14 +24,6 @@ import com.google.firebase.database.IgnoreExtraProperties;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-class offuser {
-    public String firstName, lastName, email, mobnumber, password, society, str_wing, house;
-
-    public offuser() {
-
-    }
-}
-
 public class home extends AppCompatActivity {
 
     Button btn;
@@ -54,7 +46,7 @@ public class home extends AppCompatActivity {
 //        ref.child("Users").child(Userid).addListenerForSingleValueEvent(new ValueEventListener() {
 //            @Override
 //            public void onDataChange(DataSnapshot dataSnapshot) {
-//                offuser user = dataSnapshot.getValue(offuser.class);
+//                User user = dataSnapshot.getValue(offuser.class);
 //                username.setText("Hi," + user.firstName + " " + user.lastName);
 //                Toast.makeText(home.this,user.firstName,Toast.LENGTH_LONG).show();
 //            }

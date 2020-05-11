@@ -71,7 +71,7 @@ public class Login extends AppCompatActivity {
                     ref.child("Users").child(Userid).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-                            offuser user = dataSnapshot.getValue(offuser.class);
+                            User user = dataSnapshot.getValue(User.class);
                             if (user.society != "NULL" && user.str_wing != "NULL" && user.house != "NULL") {
                                 Intent i = new Intent(Login.this, home.class);
                                 startActivity(i);
