@@ -1,26 +1,26 @@
 package com.example.secfsoc;
 
 public class Society {
-    String sname,sarea,sadd,sowner;
+    String scode,sname,sarea,sadd,sowner;
     public Society() {
 
     }
 
-    public Society(String name, String area, String add, String owner) {
-//        scode = code;
+    public Society(String code,String name, String area, String add, String owner) {
+        scode = code;
         sname = name;
         sarea = area;
         sadd = add;
         sowner = owner;
         }
 
-//    public String getScode() {
-//        return scode;
-//    }
-//
-//    public void setScode(String scode) {
-//        this.scode = scode;
-//    }
+    public String getScode() {
+        return scode;
+    }
+
+    public void setScode(String scode) {
+        this.scode = scode;
+    }
 
     public String getSname() {
         return sname;

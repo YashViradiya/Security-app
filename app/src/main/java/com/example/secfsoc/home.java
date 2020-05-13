@@ -40,23 +40,23 @@ public class home extends AppCompatActivity {
         btn = (Button)findViewById(R.id.log_out);
         username = (TextView)findViewById(R.id.uname);
         sp = getSharedPreferences("login",MODE_PRIVATE);
-//        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-//        String Userid = currentUser.getUid();
-//
-//        ref = FirebaseDatabase.getInstance().getReference();
-//        ref.child("Users").child(Userid).addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                User user = dataSnapshot.getValue(offuser.class);
-//                username.setText("Hi," + user.firstName + " " + user.lastName);
-//                Toast.makeText(home.this,user.firstName,Toast.LENGTH_LONG).show();
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        String Userid = currentUser.getUid();
+
+        ref = FirebaseDatabase.getInstance().getReference();
+        ref.child("Users").child(Userid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+                username.setText("Hi," + user.getFirstName() + " " + user.getLastName());
+                Toast.makeText(home.this,user.getFirstName(),Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
 
 //        Toast.makeText(home.this,Userfname,Toast.LENGTH_SHORT).show();
