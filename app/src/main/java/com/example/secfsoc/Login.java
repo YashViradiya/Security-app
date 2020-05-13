@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -17,20 +18,14 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class Login extends AppCompatActivity {
-
-    public static final String USERID = "com.example.secfsoc.USERID";
     Button sign_btn,login_btn;
     TextInputLayout logemail,logpass;
+    CheckBox remeber;
     private FirebaseAuth mAuth;
+
     SharedPreferences sp;
-    DatabaseReference ref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +37,13 @@ public class Login extends AppCompatActivity {
         sign_btn = findViewById(R.id.signup_btn);
         mAuth = FirebaseAuth.getInstance();
 
-        sp = getSharedPreferences("login",MODE_PRIVATE);    //remain logged in
-
-        if(sp.getBoolean("logged",false)){
-            Intent intent = new Intent(Login.this,home.class);
-            startActivity(intent);
+        sp = getSharedPreferences("login",MODE_PRIVATE);
+        if(sp.getBoolean("logged",false)) {
+            Intent i = new Intent(Login.this,JoinSociety.class);
+            startActivity(i);
         }
+
+
         sign_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,59 +55,30 @@ public class Login extends AppCompatActivity {
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!valemail())
+                    return;
+                if(!valpass())
+                    return;
+                final String userEntermail = logemail.getEditText().getText().toString().trim();
+                final String userEnterpass = logpass.getEditText().getText().toString().trim();
+                mAuth.signInWithEmailAndPassword(userEntermail,userEnterpass).addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful())
+                        {
 
-                final int[] check = {0};
-
-                // code for login to home page if detail are already their
-                {
-                    FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-                    String Userid = currentUser.getUid();
-
-                    ref = FirebaseDatabase.getInstance().getReference();
-                    ref.child("Users").child(Userid).addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            User user = dataSnapshot.getValue(User.class);
-                            if (user.society != "NULL" && user.str_wing != "NULL" && user.house != "NULL") {
-                                Intent i = new Intent(Login.this, home.class);
-                                startActivity(i);
-                                Toast.makeText(Login.this, "Society details already taken", Toast.LENGTH_LONG).show();
-                            } else {
-                                check[0] = 1;
-                            }
-
+                            Intent intent = new Intent(Login.this,JoinSociety.class);
+                            sp.edit().putBoolean("logged",true).apply();
+                            startActivity(intent);
                         }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                        else
+                        {
+                            Toast.makeText(Login.this, "Please Enter Correct Details", Toast.LENGTH_SHORT).show();
                         }
-                    });
-                }
+                    }
+                });
 
-                if(check[0]==1) {
-                    if (!valemail())
-                        return;
-                    if (!valpass())
-                        return;
-                    final String userEntermail = logemail.getEditText().getText().toString().trim();
-                    final String userEnterpass = logpass.getEditText().getText().toString().trim();
-                    mAuth.signInWithEmailAndPassword(userEntermail, userEnterpass).addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-                                Intent intent = new Intent(Login.this, JoinSociety.class);
-                                sp.edit().putBoolean("logged", true).apply();
-                                intent.putExtra("Userid", currentUser.getUid());
-                                startActivity(intent);
-                            } else {
-                                Toast.makeText(Login.this, "Please Enter Correct Details", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
 
-                }
             }
         });
 
@@ -119,7 +86,7 @@ public class Login extends AppCompatActivity {
 
     }
     private boolean valemail(){
-        String val = logemail.getEditText().getText().toString();
+        String val = logemail.getEditText().getText().toString().trim();
         String pat = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
         if(val.isEmpty()){
             logemail.setError("Field Cannot be empty");

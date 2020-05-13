@@ -26,8 +26,7 @@ public class JoinSociety extends AppCompatActivity {
     TextInputLayout code, wingname, hnum;
     Button contbtn, regbtn;
     String userid;
-    int check = 0;
-    DatabaseReference ref;
+    DatabaseReference ref,socref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +39,35 @@ public class JoinSociety extends AppCompatActivity {
             contbtn = (Button) findViewById(R.id.cont);
             regbtn = (Button) findViewById(R.id.reg_soc);
 
+            socref = FirebaseDatabase.getInstance().getReference("Society");
+            ref = FirebaseDatabase.getInstance().getReference("Users");
+
+//        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                if (dataSnapshot.child("society").getValue().toString()==null) {
+//                    Log.e("strName","avl");
+//                    Intent i = new Intent(JoinSociety.this, home.class);
+//                    startActivity(i);
+//                }
+//                else
+//                {
+//                    Log.e("strName","!avl");
+////                    Toast.makeText(JoinSociety.this,dataSnapshot.child("society").getValue().toString(),Toast.LENGTH_SHORT).show();
+////                    Log.e("strName",dataSnapshot.child("society").getValue().toString());
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//                Toast.makeText(JoinSociety.this, "Error fetching data", Toast.LENGTH_LONG).show();
+//            }
+//        });
 
             regbtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent i = new Intent(JoinSociety.this, home.class);
+                    Intent i = new Intent(JoinSociety.this, NewSociety.class);
                     startActivity(i);
                 }
             });
@@ -52,9 +75,9 @@ public class JoinSociety extends AppCompatActivity {
             contbtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (jsoc()) {
-                        Intent i = new Intent(JoinSociety.this, home.class);
-                        startActivity(i);
+                    if(jsoc())
+                    {
+
                     }
                 }
             });
@@ -62,9 +85,9 @@ public class JoinSociety extends AppCompatActivity {
 
 
     private boolean jsoc() {
-        String society_code = code.getEditText().getText().toString().trim();
-        String street_wing = wingname.getEditText().getText().toString().trim();
-        String house_no = hnum.getEditText().getText().toString().trim();
+        final String society_code = code.getEditText().getText().toString().trim();
+        final String street_wing = wingname.getEditText().getText().toString().trim();
+        final String house_no = hnum.getEditText().getText().toString().trim();
 
         if (TextUtils.isEmpty(society_code)) {
             code.setError("Field Cannot be empty");
@@ -79,16 +102,55 @@ public class JoinSociety extends AppCompatActivity {
             Toast.makeText(this, "Enter House Number", Toast.LENGTH_SHORT).show();
             return false;
         } else {
-            userid = getIntent().getStringExtra("Userid");
-            //            Log.e("strName", userid);
+            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+            userid = currentUser.getUid();
 
-            ref = FirebaseDatabase.getInstance().getReference("Users");
-            ref.child(userid).child("society").setValue(society_code);
-            ref.child(userid).child("str_wing").setValue(street_wing);
-            ref.child(userid).child("house").setValue(house_no);
+//            ref.addListenerForSingleValueEvent(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                    if(dataSnapshot.child("society").getValue().toString()!=null)
+//                    {
+//                        Intent intent = new Intent(JoinSociety.this, home.class);
+//                        startActivity(intent);
+//                        finish();
+//                    }
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                }
+//            });
 
-            Toast.makeText(this, userid, Toast.LENGTH_SHORT).show();
+
+            socref.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.child(society_code).exists()) {
+//                        Log.e("strName","exists");
+                        ref.child(userid).child("society").setValue(society_code);
+                        ref.child(userid).child("str_wing").setValue(street_wing);
+                        ref.child(userid).child("house").setValue(house_no);
+
+                        Intent intent = new Intent(JoinSociety.this, home.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                    else
+                    {
+                        Toast.makeText(JoinSociety.this,"Wrong society code",Toast.LENGTH_LONG).show();
+                        Log.e("strName","error1213");
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Toast.makeText(JoinSociety.this, "Error fetching data", Toast.LENGTH_LONG).show();
+                }
+            });
             return true;
+            }
         }
     }
-}
+

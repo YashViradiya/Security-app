@@ -51,7 +51,7 @@ public class signup extends AppCompatActivity {
                     return;
                 String a = regfirst.getEditText().getText().toString().trim();
                 String b = reglast.getEditText().getText().toString().trim();
-                final String c = regemail.getEditText().getText().toString().trim();
+                String c = regemail.getEditText().getText().toString().trim();
                 String d = regmo.getEditText().getText().toString().trim();
                 String e = regpass.getEditText().getText().toString().trim();
                 final User usr = new User(a,b,c,d,e,"","","");

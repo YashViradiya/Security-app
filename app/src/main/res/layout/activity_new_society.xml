@@ -2,15 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_centerVertical="true"
-    android:layout_centerHorizontal="true"
     android:minWidth="300dp"
+    android:layout_gravity="center"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true"
     android:orientation="vertical"
     android:background="#fff">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_margin="15dp"
         android:orientation="vertical"
         >
@@ -40,15 +41,17 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Enter Your Society Details"
+            android:text="Enter New Society Details"
             android:textSize="30dp"
             android:layout_marginBottom="30dp"
             />
+
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/soc_code"
-            android:hint="Society Code"
+            android:id="@+id/soc_name"
+            android:hint="Society Name"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             >
 
@@ -64,8 +67,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/street_wing"
-            android:hint="Street/Wing"
+            android:id="@+id/soc_area"
+            android:hint="Area"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             >
 
@@ -79,15 +82,14 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/house_no"
-            android:hint="House Number"
+            android:id="@+id/soc_add"
+            android:hint="Address"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
                 >
 
             </com.google.android.material.textfield.TextInputEditText>
@@ -97,32 +99,16 @@
 
 
         <Button
-            android:id="@+id/cont"
+            android:id="@+id/soc_create"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:layout_gravity="center"
             android:background="@color/colorPrimaryDark"
             android:textColor="@color/colorPrimary"
-            android:text="Continue"
+            android:text="Create"
             />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="OR"
-            android:textAlignment="center"
-            android:textSize="15dp"
-            />
 
-        <Button
-            android:id="@+id/reg_soc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@color/colorPrimaryDark"
-            android:textColor="@color/colorPrimary"
-            android:text="Register Society"
-            />
     </LinearLayout>
 </LinearLayout>

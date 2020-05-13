@@ -30,6 +30,7 @@ public class home extends AppCompatActivity {
     DatabaseReference ref;
     TextView username;
     String fname,lname;
+    SharedPreferences sp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,7 @@ public class home extends AppCompatActivity {
 
         btn = (Button)findViewById(R.id.log_out);
         username = (TextView)findViewById(R.id.uname);
-
+        sp = getSharedPreferences("login",MODE_PRIVATE);
 //        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 //        String Userid = currentUser.getUid();
 //
@@ -63,13 +64,9 @@ public class home extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                SharedPreferences.Editor editor = settings.edit();
-                editor.remove("login");
-
                 Intent i=new Intent(home.this,Login.class);
                 startActivity(i);
+                sp.edit().putBoolean("logged",false).apply();
                 finish();
             }
         });
