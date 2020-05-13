@@ -27,7 +27,7 @@ public class JoinSociety extends AppCompatActivity {
     Button contbtn, regbtn;
     String userid;
     DatabaseReference ref,socref;
-
+// Code for joinsoc
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

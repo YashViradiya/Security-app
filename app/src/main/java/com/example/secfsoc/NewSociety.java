@@ -84,9 +84,8 @@ public class NewSociety extends AppCompatActivity {
 //                    }
                     Intent j = new Intent(NewSociety.this, home.class);
                     FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-                    String key = ref.push().getKey();
                     final Society soc = new Society(num,society_name, society_area, socirty_add, currentUser.getUid());
-                    ref.child(key).setValue(soc);
+                    ref.child(num).setValue(soc);
                     startActivity(j);
                     finish();
                 }
