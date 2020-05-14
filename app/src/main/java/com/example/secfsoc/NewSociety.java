@@ -51,7 +51,7 @@ public class NewSociety extends AppCompatActivity {
 
                 final String society_name = name.getEditText().getText().toString().trim();
                 final String society_area = area.getEditText().getText().toString().trim();
-                final String socirty_add = add.getEditText().getText().toString().trim();
+                final String society_add = add.getEditText().getText().toString().trim();
 
 
 
@@ -84,7 +84,7 @@ public class NewSociety extends AppCompatActivity {
 //                    }
                     Intent j = new Intent(NewSociety.this, home.class);
                     FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-                    final Society soc = new Society(num,society_name, society_area, socirty_add, currentUser.getUid());
+                    final Society soc = new Society(num,society_name, society_area, society_add, currentUser.getUid());
                     ref.child(num).setValue(soc);
                     startActivity(j);
                     finish();
@@ -97,7 +97,7 @@ public class NewSociety extends AppCompatActivity {
     private boolean nsoc(){
         String society_name = name.getEditText().getText().toString().trim();
         String society_area = area.getEditText().getText().toString().trim();
-        String socirty_add = add.getEditText().getText().toString().trim();
+        String society_add = add.getEditText().getText().toString().trim();
 
         if (TextUtils.isEmpty(society_name)) {
             name.setError("Field Cannot be empty");
@@ -107,7 +107,7 @@ public class NewSociety extends AppCompatActivity {
             area.setError("Field Cannot be empty");
             Toast.makeText(this, "Enter area of society", Toast.LENGTH_SHORT).show();
             return false;
-        } else if (TextUtils.isEmpty(socirty_add)) {
+        } else if (TextUtils.isEmpty(society_add)) {
             add.setError("Field Cannot be empty");
             Toast.makeText(this, "Enter address", Toast.LENGTH_SHORT).show();
             return false;

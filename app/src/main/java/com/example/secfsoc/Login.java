@@ -22,7 +22,6 @@ import com.google.firebase.auth.FirebaseUser;
 public class Login extends AppCompatActivity {
     Button sign_btn,login_btn;
     TextInputLayout logemail,logpass;
-    CheckBox remeber;
     private FirebaseAuth mAuth;
 
     SharedPreferences sp;
@@ -66,7 +65,6 @@ public class Login extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful())
                         {
-
                             Intent intent = new Intent(Login.this,JoinSociety.class);
                             sp.edit().putBoolean("logged",true).apply();
                             startActivity(intent);
@@ -81,10 +79,10 @@ public class Login extends AppCompatActivity {
 
             }
         });
-
-
-
     }
+
+
+
     private boolean valemail(){
         String val = logemail.getEditText().getText().toString().trim();
         String pat = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
@@ -103,8 +101,11 @@ public class Login extends AppCompatActivity {
             return true;
         }
     }
+
+
+
     private boolean valpass(){
-        String val = logpass.getEditText().getText().toString();
+        String val = logpass.getEditText().getText().toString().trim();
         if(val.isEmpty()){
             logpass.setError("Field Cannot be empty");
             return false;
