@@ -49,7 +49,6 @@ public class home extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
                 username.setText("Hi," + user.getFirstName() + " " + user.getLastName());
-                Toast.makeText(home.this,user.getFirstName(),Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -57,9 +56,6 @@ public class home extends AppCompatActivity {
 
             }
         });
-
-
-//        Toast.makeText(home.this,Userfname,Toast.LENGTH_SHORT).show();
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

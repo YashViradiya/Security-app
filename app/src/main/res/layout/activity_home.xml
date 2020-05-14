@@ -17,7 +17,6 @@
         android:layout_margin="10dp"
         android:fontFamily="@font/bungee"
         android:textColor="#000"
-        android:transitionName="logo_name"
         />
 
     <TextView
@@ -28,7 +27,7 @@
         android:fontFamily="@font/bungee"
         android:textSize="50dp"
         android:layout_marginTop="40dp"
-        android:layout_marginLeft="10dp"
+
         />
 
     <Button

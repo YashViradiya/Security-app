@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -18,6 +19,11 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Login extends AppCompatActivity {
     Button sign_btn,login_btn;
@@ -38,8 +44,7 @@ public class Login extends AppCompatActivity {
 
         sp = getSharedPreferences("login",MODE_PRIVATE);
         if(sp.getBoolean("logged",false)) {
-            Intent i = new Intent(Login.this,JoinSociety.class);
-            startActivity(i);
+            loginto();
         }
 
 
@@ -65,9 +70,7 @@ public class Login extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful())
                         {
-                            Intent intent = new Intent(Login.this,JoinSociety.class);
-                            sp.edit().putBoolean("logged",true).apply();
-                            startActivity(intent);
+                            loginto();
                         }
                         else
                         {
@@ -115,5 +118,43 @@ public class Login extends AppCompatActivity {
             logpass.setError(null);
             return true;
         }
+    }
+
+
+    private void loginto(){
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        final String userid = currentUser.getUid();
+
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                String s = dataSnapshot.child(userid).child("society").getValue().toString();
+                Log.e("strName","1"+s+"2");
+                if(s=="")
+                {
+                    Intent intent = new Intent(Login.this,JoinSociety.class);
+                    sp.edit().putBoolean("logged",true).apply();
+                    startActivity(intent);
+                    finish();
+                    return;
+                }
+                else
+                {
+                    Intent i = new Intent(Login.this,home.class);
+                    sp.edit().putBoolean("logged",true).apply();
+                    startActivity(i);
+                    finish();
+                    return;
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(Login.this,"Error fetching data",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
