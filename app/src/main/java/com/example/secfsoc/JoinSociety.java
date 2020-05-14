@@ -27,7 +27,7 @@ public class JoinSociety extends AppCompatActivity {
     Button contbtn, regbtn;
     String userid;
     DatabaseReference ref,socref;
-// Code for joinsoc
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,43 +42,16 @@ public class JoinSociety extends AppCompatActivity {
             socref = FirebaseDatabase.getInstance().getReference("Society");
             ref = FirebaseDatabase.getInstance().getReference("Users");
 
-//        final class User user = new User;
-//        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-//
-//                dataSnapshot.getValue()
-//                if (dataSnapshot.child("society").getValue().toString()==null) {
-//                    Log.e("strName","avl");
-//                    Intent i = new Intent(JoinSociety.this, home.class);
-//                    startActivity(i);
-//                }
-//                else
-//                {
-//                    Log.e("strName","!avl");
-//                    Toast.makeText(JoinSociety.this,dataSnapshot.child("society").getValue().toString(),Toast.LENGTH_SHORT).show();
-//                    Log.e("strName",dataSnapshot.child("society").getValue().toString());
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//                Toast.makeText(JoinSociety.this, "Error fetching data", Toast.LENGTH_LONG).show();
-//            }
-//        });
-
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         userid = currentUser.getUid();
 
-        final User user = new User("","","","","","","","");
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                user.setSociety(dataSnapshot.child(userid).child("society").getValue().toString());
+                String soc = dataSnapshot.child(userid).child("society").getValue().toString();
 
-                if(user.getSociety()!=null)
+                if(!soc.isEmpty())
                 {
                     Intent i = new Intent(JoinSociety.this,home.class);
                     startActivity(i);

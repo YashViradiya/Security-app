@@ -133,7 +133,7 @@ public class Login extends AppCompatActivity {
 
                 String s = dataSnapshot.child(userid).child("society").getValue().toString();
                 Log.e("strName","1"+s+"2");
-                if(s=="")
+                if(s.isEmpty())
                 {
                     Intent intent = new Intent(Login.this,JoinSociety.class);
                     sp.edit().putBoolean("logged",true).apply();

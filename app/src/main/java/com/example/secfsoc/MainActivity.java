@@ -28,7 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
-    private static int SPLASH_TIME_OUT=1000;
+    private static int SPLASH_TIME_OUT=500;
     SharedPreferences sp;
 
     @Override
@@ -62,14 +62,14 @@ public class MainActivity extends AppCompatActivity {
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
 
-        final User user = new User("","","","","","","","");
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                user.setSociety(dataSnapshot.child(userid).child("society").getValue().toString());
 
-                if(user.getSociety()!=null)
+                String soc = dataSnapshot.child(userid).child("society").getValue().toString();
+
+                if(!soc.isEmpty())
                 {
                     new Handler().postDelayed(new Runnable() {
                         @Override
