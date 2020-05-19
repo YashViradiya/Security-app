@@ -53,6 +53,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(Login.this,signup.class);
                 startActivity(i);
+                finish();
             }
         });
         login_btn = findViewById(R.id.signin_btn);

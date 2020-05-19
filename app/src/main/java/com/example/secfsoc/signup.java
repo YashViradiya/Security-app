@@ -20,7 +20,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class signup extends AppCompatActivity {
-    public static final String USERID = "com.example.secfsoc.USERID";
 
     TextInputLayout regfirst,reglast,regemail,regmo,regpass;
     Button regbtn,regtolog;
@@ -67,6 +66,7 @@ public class signup extends AppCompatActivity {
                             Intent intent = new Intent(signup.this,JoinSociety.class);
                             intent.putExtra("Userid",currentUser.getUid());
                             startActivity(intent);
+                            finish();
                         }
                         else
                         {
@@ -84,6 +84,7 @@ public class signup extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(signup.this,MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 

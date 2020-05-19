@@ -72,6 +72,7 @@ public class JoinSociety extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent i = new Intent(JoinSociety.this, NewSociety.class);
                     startActivity(i);
+                    finish();
                 }
             });
 
