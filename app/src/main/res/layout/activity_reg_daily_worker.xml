@@ -19,12 +19,7 @@
             android:id="@+id/toolbar"
             android:layout_gravity="center"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:autoSizeTextType="uniform"
-            android:autoSizeMinTextSize="12sp"
-            android:autoSizeMaxTextSize="100sp"
-            android:autoSizeStepGranularity="2sp"
-            android:text="Hi"
+            android:layout_height="wrap_content"            android:text="Hi"
             android:fontFamily="@font/bungee"
             />
 

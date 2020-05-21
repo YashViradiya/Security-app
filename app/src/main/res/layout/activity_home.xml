@@ -60,21 +60,25 @@
             android:layout_height="match_parent"
             android:layout_margin="20dp"
             android:layout_weight="1.5"
+            android:weightSum="2"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:fontFamily="@font/bungee"
                 android:text="Guest Appointment"
+                android:layout_weight="1"
                 android:textColor="#000"
                 />
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_marginLeft="10dp"
-                android:text="Take poirier appointment for your guest " />
+                android:text="Take poirier appointment for your guest "
+                android:layout_weight="1"
+                />
 
         </LinearLayout>
 
@@ -104,21 +108,24 @@
             android:layout_height="match_parent"
             android:layout_margin="20dp"
             android:layout_weight="1.5"
+            android:weightSum="2"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:fontFamily="@font/bungee"
-                android:text="Guest Appointment"
+                android:layout_weight="1"
+                android:text="Register Daily-Worker"
                 android:textColor="#000"
                 />
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_marginLeft="10dp"
-                android:text="Take poirier appointment for your guest " />
+                android:layout_weight="1"
+                android:text="Register your workers so that he/she can get easy entry " />
 
         </LinearLayout>
 
@@ -147,21 +154,24 @@
             android:layout_height="match_parent"
             android:layout_margin="20dp"
             android:layout_weight="1.5"
+            android:weightSum="2"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:fontFamily="@font/bungee"
-                android:text="Guest Appointment"
+                android:text="Facilities"
+                android:layout_weight="1"
                 android:textColor="#000"
                 />
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_marginLeft="10dp"
-                android:text="Take poirier appointment for your guest " />
+                android:layout_weight="1"
+                android:text="Use facilities that society provides and do check-In check-Out for betterment of society" />
 
         </LinearLayout>
 
