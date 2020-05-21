@@ -1,5 +1,6 @@
 package com.example.secfsoc;
 
+
 public class Security {
     String first,last,email,password,phone,society;
     public Security() {

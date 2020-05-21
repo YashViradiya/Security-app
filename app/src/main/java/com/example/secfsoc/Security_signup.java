@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+
 public class Security_signup extends AppCompatActivity {
     TextInputLayout regfirst,reglast,regemail,regmo,regpass;
     Button regbtn,regtolog;

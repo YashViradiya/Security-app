@@ -21,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 
+
 public class JoinSociety extends AppCompatActivity {
 
     TextInputLayout code, wingname, hnum;

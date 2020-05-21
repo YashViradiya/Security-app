@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+
 public class Security_community_option extends AppCompatActivity {
     Button sec,com;
     @Override
