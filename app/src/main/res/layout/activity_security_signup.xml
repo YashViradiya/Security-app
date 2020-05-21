@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".signup"
+    tools:context=".Security_signup"
     android:orientation="vertical"
     android:background="#fff"
     android:padding="20dp">
-
 
     <TextView
         android:layout_width="wrap_content"
@@ -111,8 +110,6 @@
         android:text="Already have an account? Sign in"
         android:background="#00000000"
         />
-
-
 
 
 

@@ -8,9 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,18 +24,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 
-public class Login extends AppCompatActivity {
+public class Security_login extends AppCompatActivity {
     Button sign_btn,login_btn;
     TextInputLayout logemail,logpass;
     private FirebaseAuth mAuth;
 
     SharedPreferences sp;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_security_login);
         logemail = findViewById(R.id.email);
         logpass = findViewById(R.id.password);
         sign_btn = findViewById(R.id.signup_btn);
@@ -52,7 +48,7 @@ public class Login extends AppCompatActivity {
         sign_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Login.this,signup.class);
+                Intent i = new Intent(Security_login.this,Security_signup.class);
                 startActivity(i);
                 finish();
             }
@@ -67,7 +63,7 @@ public class Login extends AppCompatActivity {
                     return;
                 final String userEntermail = logemail.getEditText().getText().toString().trim();
                 final String userEnterpass = logpass.getEditText().getText().toString().trim();
-                mAuth.signInWithEmailAndPassword(userEntermail,userEnterpass).addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
+                mAuth.signInWithEmailAndPassword(userEntermail,userEnterpass).addOnCompleteListener(Security_login.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful())
@@ -76,7 +72,7 @@ public class Login extends AppCompatActivity {
                         }
                         else
                         {
-                            Toast.makeText(Login.this, "Please Enter Correct Details", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Security_login.this, "Please Enter Correct Details", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -84,11 +80,7 @@ public class Login extends AppCompatActivity {
 
             }
         });
-
     }
-
-
-
     private boolean valemail(){
         String val = logemail.getEditText().getText().toString().trim();
         String pat = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
@@ -138,7 +130,7 @@ public class Login extends AppCompatActivity {
                 Log.e("strName","1"+s+"2");
                 if(s.isEmpty())
                 {
-                    Intent intent = new Intent(Login.this,JoinSociety.class);
+                    Intent intent = new Intent(Security_login.this,JoinSociety.class);
                     sp.edit().putBoolean("logged",true).apply();
                     startActivity(intent);
                     finish();
@@ -146,7 +138,7 @@ public class Login extends AppCompatActivity {
                 }
                 else
                 {
-                    Intent i = new Intent(Login.this,home.class);
+                    Intent i = new Intent(Security_login.this,home.class);
                     sp.edit().putBoolean("logged",true).apply();
                     startActivity(i);
                     finish();
@@ -156,7 +148,7 @@ public class Login extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(Login.this,"Error fetching data",Toast.LENGTH_SHORT).show();
+                Toast.makeText(Security_login.this,"Error fetching data",Toast.LENGTH_SHORT).show();
             }
         });
     }

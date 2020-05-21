@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -20,19 +19,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
-public class signup extends AppCompatActivity {
-
+public class Security_signup extends AppCompatActivity {
     TextInputLayout regfirst,reglast,regemail,regmo,regpass;
     Button regbtn,regtolog;
     FirebaseDatabase root;
     DatabaseReference ref;
     private FirebaseAuth mAuth;
-
     @Override
-    protected void onCreate(Bundle savedInstanceState)  {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_signup);
+        setContentView(R.layout.activity_security_signup);
         regfirst = findViewById(R.id.first_name);
         reglast = findViewById(R.id.last_name);
         regemail = findViewById(R.id.email);
@@ -41,7 +37,7 @@ public class signup extends AppCompatActivity {
         regbtn = findViewById(R.id.regsignup);
         regtolog = findViewById(R.id.regtologin);
         root = FirebaseDatabase.getInstance();
-        ref = root.getReference("Users");
+        ref = root.getReference("Security");
         mAuth = FirebaseAuth.getInstance();
         regbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,8 +50,9 @@ public class signup extends AppCompatActivity {
                 String c = regemail.getEditText().getText().toString().trim();
                 String d = regmo.getEditText().getText().toString().trim();
                 String e = regpass.getEditText().getText().toString().trim();
-                final User usr = new User(a,b,c,d,e,"","","");
-                mAuth.createUserWithEmailAndPassword(c,e).addOnCompleteListener(signup.this,new OnCompleteListener<AuthResult>() {
+
+                final Security security = new Security(a,b,c,d,e,"");
+                mAuth.createUserWithEmailAndPassword(c,e).addOnCompleteListener(Security_signup.this,new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful())
@@ -63,8 +60,8 @@ public class signup extends AppCompatActivity {
                             String key = mAuth.getUid();
                             FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
-                            ref.child(key).setValue(usr);
-                            Intent intent = new Intent(signup.this,JoinSociety.class);
+                            ref.child(key).setValue(security);
+                            Intent intent = new Intent(Security_signup.this,Security_JoinSociety.class);
                             intent.putExtra("Userid",currentUser.getUid());
                             startActivity(intent);
                             finish();
@@ -72,7 +69,7 @@ public class signup extends AppCompatActivity {
                         else
                         {
                             task.getException();
-                            Toast.makeText(signup.this, "Sign up Failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Security_signup.this, "Sign up Failed", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -83,13 +80,11 @@ public class signup extends AppCompatActivity {
         regtolog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(signup.this,Login.class);
+                Intent intent = new Intent(Security_signup.this,MainActivity.class);
                 startActivity(intent);
                 finish();
             }
         });
-
-
     }
     private boolean valfirst(){
         String val = regfirst.getEditText().getText().toString();
@@ -162,8 +157,5 @@ public class signup extends AppCompatActivity {
             return true;
         }
     }
-
-
-
 
 }
