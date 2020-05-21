@@ -23,17 +23,19 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+public class SecurityLogin extends AppCompatActivity {
 
-public class Security_login extends AppCompatActivity {
     Button sign_btn,login_btn;
     TextInputLayout logemail,logpass;
     private FirebaseAuth mAuth;
 
     SharedPreferences sp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_security_login);
+
         logemail = findViewById(R.id.email);
         logpass = findViewById(R.id.password);
         sign_btn = findViewById(R.id.signup_btn);
@@ -48,7 +50,7 @@ public class Security_login extends AppCompatActivity {
         sign_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Security_login.this,Security_signup.class);
+                Intent i = new Intent(SecurityLogin.this,SecuritySignup.class);
                 startActivity(i);
                 finish();
             }
@@ -63,7 +65,7 @@ public class Security_login extends AppCompatActivity {
                     return;
                 final String userEntermail = logemail.getEditText().getText().toString().trim();
                 final String userEnterpass = logpass.getEditText().getText().toString().trim();
-                mAuth.signInWithEmailAndPassword(userEntermail,userEnterpass).addOnCompleteListener(Security_login.this, new OnCompleteListener<AuthResult>() {
+                mAuth.signInWithEmailAndPassword(userEntermail,userEnterpass).addOnCompleteListener(SecurityLogin.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful())
@@ -72,7 +74,7 @@ public class Security_login extends AppCompatActivity {
                         }
                         else
                         {
-                            Toast.makeText(Security_login.this, "Please Enter Correct Details", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SecurityLogin.this, "Please Enter Correct Details", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -130,7 +132,7 @@ public class Security_login extends AppCompatActivity {
                 Log.e("strName","1"+s+"2");
                 if(s.isEmpty())
                 {
-                    Intent intent = new Intent(Security_login.this,JoinSociety.class);
+                    Intent intent = new Intent(SecurityLogin.this,SecurityJoinSociety.class);
                     sp.edit().putBoolean("logged",true).apply();
                     startActivity(intent);
                     finish();
@@ -138,7 +140,7 @@ public class Security_login extends AppCompatActivity {
                 }
                 else
                 {
-                    Intent i = new Intent(Security_login.this,home.class);
+                    Intent i = new Intent(SecurityLogin.this,SecurityHome.class);
                     sp.edit().putBoolean("logged",true).apply();
                     startActivity(i);
                     finish();
@@ -148,7 +150,7 @@ public class Security_login extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(Security_login.this,"Error fetching data",Toast.LENGTH_SHORT).show();
+                Toast.makeText(SecurityLogin.this,"Error fetching data",Toast.LENGTH_SHORT).show();
             }
         });
     }

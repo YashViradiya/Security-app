@@ -19,16 +19,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+public class SecurityJoinSociety extends AppCompatActivity {
 
-public class Security_JoinSociety extends AppCompatActivity {
     TextInputLayout code;
     Button contbtn;
     String userid;
     DatabaseReference ref,socref;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_security__join_society);
+        setContentView(R.layout.activity_security_join_society);
+
         code = findViewById(R.id.soc_code);
         contbtn = (Button) findViewById(R.id.cont);
 
@@ -46,9 +48,9 @@ public class Security_JoinSociety extends AppCompatActivity {
 
                 if(!soc.isEmpty())
                 {
-                    Intent i = new Intent(Security_JoinSociety.this,Security_home.class);
+                    Intent i = new Intent(SecurityJoinSociety.this,SecurityHome.class);
                     startActivity(i);
-                    Toast.makeText(Security_JoinSociety.this, "Society details already registered", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SecurityJoinSociety.this, "Society details already registered", Toast.LENGTH_SHORT).show();
                     finish();
                     return;
                 }
@@ -56,7 +58,7 @@ public class Security_JoinSociety extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(Security_JoinSociety.this,"Error fetching data",Toast.LENGTH_SHORT).show();
+                Toast.makeText(SecurityJoinSociety.this,"Error fetching data",Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -90,13 +92,13 @@ public class Security_JoinSociety extends AppCompatActivity {
                         ref.child(userid).child("society").setValue(society_code);
 
 
-                        Intent intent = new Intent(Security_JoinSociety.this, Security_home.class);
+                        Intent intent = new Intent(SecurityJoinSociety.this, SecurityHome.class);
                         startActivity(intent);
                         finish();
                     }
                     else
                     {
-                        Toast.makeText(Security_JoinSociety.this,"Wrong society code",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SecurityJoinSociety.this,"Wrong society code",Toast.LENGTH_SHORT).show();
 //                        Log.e("strName","error1213");
                     }
 
@@ -104,7 +106,7 @@ public class Security_JoinSociety extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-                    Toast.makeText(Security_JoinSociety.this, "Error fetching data", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SecurityJoinSociety.this, "Error fetching data", Toast.LENGTH_SHORT).show();
                 }
             });
             return true;

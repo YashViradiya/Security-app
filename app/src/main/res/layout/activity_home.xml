@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Hi"
+            android:text="Hi, User"
             android:textColor="#000"
             android:fontFamily="@font/bungee"
 
@@ -177,12 +177,12 @@
 
     </LinearLayout>
 
-    <!--    </LinearLayout>-->
-<!--    <Button-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Log Out"-->
-<!--        android:id="@+id/log_out"-->
-<!--        />-->
+<!--        </LinearLayout>-->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Log Out"
+        android:id="@+id/log_out"
+        />
 
 </LinearLayout>

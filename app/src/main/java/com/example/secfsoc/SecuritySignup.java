@@ -18,17 +18,19 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+public class SecuritySignup extends AppCompatActivity {
 
-public class Security_signup extends AppCompatActivity {
     TextInputLayout regfirst,reglast,regemail,regmo,regpass;
     Button regbtn,regtolog;
     FirebaseDatabase root;
     DatabaseReference ref;
     private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_security_signup);
+
         regfirst = findViewById(R.id.first_name);
         reglast = findViewById(R.id.last_name);
         regemail = findViewById(R.id.email);
@@ -52,7 +54,7 @@ public class Security_signup extends AppCompatActivity {
                 String e = regpass.getEditText().getText().toString().trim();
 
                 final Security security = new Security(a,b,c,d,e,"");
-                mAuth.createUserWithEmailAndPassword(c,e).addOnCompleteListener(Security_signup.this,new OnCompleteListener<AuthResult>() {
+                mAuth.createUserWithEmailAndPassword(c,e).addOnCompleteListener(SecuritySignup.this,new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful())
@@ -61,7 +63,7 @@ public class Security_signup extends AppCompatActivity {
                             FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
                             ref.child(key).setValue(security);
-                            Intent intent = new Intent(Security_signup.this,Security_JoinSociety.class);
+                            Intent intent = new Intent(SecuritySignup.this,SecurityJoinSociety.class);
                             intent.putExtra("Userid",currentUser.getUid());
                             startActivity(intent);
                             finish();
@@ -69,7 +71,7 @@ public class Security_signup extends AppCompatActivity {
                         else
                         {
                             task.getException();
-                            Toast.makeText(Security_signup.this, "Sign up Failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SecuritySignup.this, "Sign up Failed", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -80,7 +82,7 @@ public class Security_signup extends AppCompatActivity {
         regtolog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Security_signup.this,MainActivity.class);
+                Intent intent = new Intent(SecuritySignup.this,MainActivity.class);
                 startActivity(intent);
                 finish();
             }
