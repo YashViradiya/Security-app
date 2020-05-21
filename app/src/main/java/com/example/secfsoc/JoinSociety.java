@@ -89,8 +89,8 @@ public class JoinSociety extends AppCompatActivity {
 
 
     private boolean jsoc() {
-        final String society_code = code.getEditText().getText().toString().trim();
-        final String street_wing = wingname.getEditText().getText().toString().trim();
+        final String society_code = code.getEditText().getText().toString().trim().toLowerCase();
+        final String street_wing = wingname.getEditText().getText().toString().trim().toUpperCase();
         final String house_no = hnum.getEditText().getText().toString().trim();
 
         if (TextUtils.isEmpty(society_code)) {
