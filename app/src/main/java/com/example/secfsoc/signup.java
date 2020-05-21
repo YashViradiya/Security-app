@@ -82,7 +82,7 @@ public class signup extends AppCompatActivity {
         regtolog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(signup.this,MainActivity.class);
+                Intent intent = new Intent(signup.this,Login.class);
                 startActivity(intent);
                 finish();
             }
