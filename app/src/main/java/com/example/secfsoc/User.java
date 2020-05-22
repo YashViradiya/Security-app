@@ -1,5 +1,6 @@
 package com.example.secfsoc;
 
+
 public class User {
     String FirstName,LastName,email,mobnumber,password,society,str_wing,house;
     public User() {

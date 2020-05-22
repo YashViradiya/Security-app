@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:minWidth="300dp"
-    android:layout_gravity="center"
-    android:layout_centerHorizontal="true"
+    tools:context=".Security_JoinSociety"
     android:layout_centerVertical="true"
+    android:layout_centerHorizontal="true"
+    android:minWidth="300dp"
     android:orientation="vertical"
     android:background="#fff">
 
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:orientation="vertical"
         >
@@ -21,18 +22,17 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="center"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
 
             >
 
             <TextView
-                android:id="@+id/logo_name"
+                android:id="@+id/app_name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="50dp"
                 android:text="SforS"
                 android:gravity="center"
-                android:layout_margin="10dp"
                 android:fontFamily="@font/bungee"
                 android:textColor="#000"
                 android:transitionName="logo_name"
@@ -42,17 +42,16 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Enter New Society Details"
+            android:text="Enter Your Society Details"
             android:textSize="30dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
             />
-
-
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/soc_name"
-            android:hint="Society Name"
+            android:id="@+id/soc_code"
+            android:hint="Society Code"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             >
 
@@ -65,51 +64,26 @@
 
 
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/soc_area"
-            android:hint="Area"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            >
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
 
-            </com.google.android.material.textfield.TextInputEditText>
-        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/soc_add"
-            android:hint="Address"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
-
-            </com.google.android.material.textfield.TextInputEditText>
-        </com.google.android.material.textfield.TextInputLayout>
 
 
 
 
         <Button
-            android:id="@+id/soc_create"
+            android:id="@+id/cont"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:layout_gravity="center"
             android:background="@color/colorPrimaryDark"
             android:textColor="@color/colorPrimary"
-            android:text="Create"
+            android:text="Continue"
             />
 
 
+
     </LinearLayout>
+
 </LinearLayout>

@@ -25,6 +25,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+
 public class Login extends AppCompatActivity {
     Button sign_btn,login_btn;
     TextInputLayout logemail,logpass;
@@ -53,6 +54,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(Login.this,signup.class);
                 startActivity(i);
+                finish();
             }
         });
         login_btn = findViewById(R.id.signin_btn);
@@ -82,6 +84,7 @@ public class Login extends AppCompatActivity {
 
             }
         });
+
     }
 
 

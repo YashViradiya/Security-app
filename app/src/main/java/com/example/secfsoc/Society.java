@@ -1,5 +1,6 @@
 package com.example.secfsoc;
 
+
 public class Society {
     String scode,sname,sarea,sadd,sowner;
     public Society() {
