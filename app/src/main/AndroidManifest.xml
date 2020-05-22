@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NewSociety"></activity>
+        <activity android:name=".SecurityLogin"></activity>
+        <activity android:name=".ComSecOpt" />
+        <activity android:name=".RegDailyWorker" />
+        <activity android:name=".NewSociety" />
         <activity android:name=".Login" />
         <activity android:name=".JoinSociety" />
         <activity android:name=".home" />

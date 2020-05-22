@@ -10,6 +10,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 public class home extends AppCompatActivity {
 
     Button btn;
+    LinearLayout dw;
     DatabaseReference ref;
     TextView username;
     String fname,lname;
@@ -38,6 +40,7 @@ public class home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         btn = (Button)findViewById(R.id.log_out);
+        dw = (LinearLayout) findViewById(R.id.rdw);
         username = (TextView)findViewById(R.id.uname);
         sp = getSharedPreferences("login",MODE_PRIVATE);
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -64,6 +67,14 @@ public class home extends AppCompatActivity {
                 startActivity(i);
                 sp.edit().putBoolean("logged",false).apply();
                 finish();
+            }
+        });
+
+        dw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(home.this,RegDailyWorker.class);
+                startActivity(i);
             }
         });
     }

@@ -5,31 +5,181 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:weightSum="3.2"
     tools:context=".home">
 
-    <TextView
-        android:id="@+id/logo_name"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="50dp"
-        android:text="SforS"
-        android:textAlignment="center"
+        android:background="#64F05E"
+        android:layout_weight="0.20"
+        >
+
+
+
+        <TextView
+
+            android:id="@+id/uname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Hi, User"
+            android:textColor="#000"
+            android:fontFamily="@font/bungee"
+
+            />
+    </LinearLayout>
+
+
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:weightSum="3"-->
+    <!--        android:orientation="vertical"-->
+    <!--        >-->
+
+    <LinearLayout
+        android:id="@+id/ga"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_margin="10dp"
-        android:fontFamily="@font/bungee"
-        android:textColor="#000"
-        />
+        android:layout_weight="1"
+        android:background="#FCCB4B"
+        android:orientation="horizontal"
+        android:weightSum="2">
 
-    <TextView
-        android:id="@+id/uname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Log in Sucessful"
-        android:fontFamily="@font/bungee"
-        android:textSize="50dp"
-        android:layout_marginTop="40dp"
 
-        />
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="0.5"
+            app:srcCompat="@drawable/security" />
 
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:layout_weight="1.5"
+            android:weightSum="2"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:fontFamily="@font/bungee"
+                android:text="Guest Appointment"
+                android:layout_weight="1"
+                android:textColor="#000"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginLeft="10dp"
+                android:text="Take poirier appointment for your guest "
+                android:layout_weight="1"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rdw"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        android:background="#87CEFA"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="0.5"
+            app:srcCompat="@drawable/security" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:layout_weight="1.5"
+            android:weightSum="2"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:fontFamily="@font/bungee"
+                android:layout_weight="1"
+                android:text="Register Daily-Worker"
+                android:textColor="#000"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:text="Register your workers so that he/she can get easy entry " />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        android:background="#F4A361"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="0.5"
+            app:srcCompat="@drawable/security" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:layout_weight="1.5"
+            android:weightSum="2"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:fontFamily="@font/bungee"
+                android:text="Facilities"
+                android:layout_weight="1"
+                android:textColor="#000"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:text="Use facilities that society provides and do check-In check-Out for betterment of society" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!--        </LinearLayout>-->
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
