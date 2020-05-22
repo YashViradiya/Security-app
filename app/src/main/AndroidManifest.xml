@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SecurityLogin"></activity>
+        <activity android:name=".SecuritySignup"></activity>
+        <activity android:name=".SecurityHome" />
+        <activity android:name=".SecurityLogin" />
         <activity android:name=".ComSecOpt" />
         <activity android:name=".RegDailyWorker" />
         <activity android:name=".NewSociety" />

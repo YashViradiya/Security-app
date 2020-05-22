@@ -63,7 +63,7 @@ public class home extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(home.this,Login.class);
+                Intent i=new Intent(home.this,ComSecOpt.class);
                 startActivity(i);
                 sp.edit().putBoolean("logged",false).apply();
                 finish();
